@@ -1,0 +1,18 @@
+19) <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Bootstrap Sass</title>
+  <link href="css/custom.css" rel="stylesheet">
+</head>
+<body class="p-4">
+  <h1 class="text-primary">Custom Primary Color</h1>
+  <button class="btn btn-primary">Rounded Button</button>
+  <div class="card mt-4">
+    <div class="card-body">
+      This card uses a custom Bootstrap build with a new primary color and border radius.
+    </div>
+  </div>
+</body>
+</html>
+

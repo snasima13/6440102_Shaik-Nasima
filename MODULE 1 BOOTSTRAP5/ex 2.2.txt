@@ -1,0 +1,34 @@
+ex 2.2
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap JS Bundle Example</title>
+  <!-- Bootstrap CSS -->
+  <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h1>Bootstrap JS Bundle Demo</h1>
+    <!-- Example button to trigger a tooltip -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip text!">
+      Hover me for tooltip
+    </button>
+  </div>
+
+  <!-- Bootstrap JS Bundle (includes Popper) -->
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Enable tooltips (Bootstrap 5 requires JS init for tooltips)
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,55 @@
+ex 2.1
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap Directory Structure Explanation</title>
+  <style>
+    body {
+      font-family: monospace, monospace;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+    pre {
+      background: #e0e0e0;
+      padding: 15px;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bootstrap Directory Structure Explanation</h1>
+  <pre>
+bootstrap/
+├── css/
+│   ├── bootstrap.css
+│   ├── bootstrap.min.css
+│   └── bootstrap.rtl.css
+│
+│ Purpose: Contains all the CSS files for Bootstrap styling.
+│ - bootstrap.css: Full, unminified CSS for development.
+│ - bootstrap.min.css: Minified CSS for production use.
+│ - bootstrap.rtl.css: CSS for right-to-left languages.
+│
+├── js/
+│   ├── bootstrap.bundle.js
+│   ├── bootstrap.bundle.min.js
+│   ├── bootstrap.js
+│   └── bootstrap.min.js
+│
+│ Purpose: Contains JavaScript files enabling Bootstrap interactive components.
+│ - bootstrap.bundle.min.js: Minified JS including Popper.js (required for dropdowns, tooltips).
+│ - bootstrap.min.js: Minified JS without Popper.js.
+│
+├── icons/
+│
+│ Purpose: Contains Bootstrap Icons (SVGs) that can be used in UI elements.
+│
+└── other files & folders as needed...
+  </pre>
+</body>
+</html>
