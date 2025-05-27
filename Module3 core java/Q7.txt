@@ -1,0 +1,12 @@
+
+7)public class TypeCastingExample {
+    public static void main(String[] args) {
+        double d = 10.75;
+        int i = (int) d; // Explicit casting
+        System.out.println("Double to int: " + i);
+
+        int num = 25;
+        double newDouble = num; // Implicit casting
+        System.out.println("Int to double: " + newDouble);
+    }
+}

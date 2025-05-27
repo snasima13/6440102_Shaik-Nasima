@@ -1,0 +1,14 @@
+34) // Simulated module: com.utils
+class Utils {
+    public static String greet(String name) {
+        return "Hello, " + name + "!";
+    }
+}
+
+// Simulated module: com.greetings
+public class CombinedModuleExample {
+    public static void main(String[] args) {
+        String message = Utils.greet("World");
+        System.out.println(message);
+    }
+}

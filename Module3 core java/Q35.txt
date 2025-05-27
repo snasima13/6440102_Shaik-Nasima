@@ -1,0 +1,70 @@
+35) server side
+
+import java.io.*;
+import java.net.*;
+
+public class TCPServer {
+    public static void main(String[] args) throws IOException {
+        ServerSocket serverSocket = new ServerSocket(12345);
+        System.out.println("Server started. Waiting for client...");
+
+        Socket clientSocket = serverSocket.accept();
+        System.out.println("Client connected.");
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+        BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
+
+        String clientMsg, serverMsg;
+
+        while (true) {
+            if (in.ready()) {
+                clientMsg = in.readLine();
+                if (clientMsg == null || clientMsg.equalsIgnoreCase("exit")) break;
+                System.out.println("Client: " + clientMsg);
+            }
+            if (console.ready()) {
+                serverMsg = console.readLine();
+                out.println(serverMsg);
+                if (serverMsg.equalsIgnoreCase("exit")) break;
+            }
+        }
+        System.out.println("Connection closed.");
+        clientSocket.close();
+        serverSocket.close();
+    }
+}
+
+
+client side
+
+import java.io.*;
+import java.net.*;
+
+public class TCPClient {
+    public static void main(String[] args) throws IOException {
+        Socket socket = new Socket("localhost", 12345);
+        System.out.println("Connected to server.");
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+        BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
+
+        String serverMsg, clientMsg;
+
+        while (true) {
+            if (in.ready()) {
+                serverMsg = in.readLine();
+                if (serverMsg == null || serverMsg.equalsIgnoreCase("exit")) break;
+                System.out.println("Server: " + serverMsg);
+            }
+            if (console.ready()) {
+                clientMsg = console.readLine();
+                out.println(clientMsg);
+                if (clientMsg.equalsIgnoreCase("exit")) break;
+            }
+        }
+        System.out.println("Connection closed.");
+        socket.close();
+    }
+}
