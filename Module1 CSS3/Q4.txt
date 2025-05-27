@@ -1,0 +1,29 @@
+4) /* 4. Color & Background Styling */
+
+/* Body with fallback bg color and background image with opacity */
+body {
+  background-color: #e0f7fa; /* fallback light cyan */
+  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80');
+  background-size: cover;
+  background-position: center;
+  color: #333333; /* HEX text color */
+  font-family: Arial, sans-serif;
+}
+
+/* Semi-transparent overlay using RGBA for text containers */
+.overlay {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 8px;
+}
+
+/* Gradient background for section headers */
+section h2 {
+  background: linear-gradient(90deg, #004d40, #26a69a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}

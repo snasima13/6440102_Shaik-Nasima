@@ -1,0 +1,31 @@
+8) /* 8. Box Model & Layout Control */
+
+/* Event card box styling */
+.eventCard {
+  border: 2px solid #007bff;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 8px;
+  background-color: #f7fbff;
+}
+
+/* Outline for focused form fields */
+input:focus, textarea:focus, select:focus {
+  outline: 3px solid #26a69a;
+  outline-offset: 2px;
+}
+
+/* Visibility comparison */
+/* Visibility hidden hides element but keeps layout space */
+/* display none removes element and layout space */
+
+/* Example usage (not functional CSS, just note) */
+/*
+.hidden-visibility {
+  visibility: hidden;
+}
+
+.hidden-display {
+  display: none;
+}
+*/

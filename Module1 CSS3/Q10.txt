@@ -1,0 +1,28 @@
+
+10) /* 10. Responsive Web Design */
+
+/* Default nav is horizontal */
+.nav-menu {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  /* Stack navigation links vertically */
+  .nav-menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Reduce font size */
+  body {
+    font-size: 14px;
+  }
+
+  /* Example: Reduce image sizes */
+  img.responsive {
+    width: 90vw; /* flexible width */
+    height: auto;
+  }
+}

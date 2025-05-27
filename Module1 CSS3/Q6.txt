@@ -1,0 +1,40 @@
+6) /* 6. Link and List Styling */
+
+/* Link pseudo-classes */
+a:link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #5a5a5a;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #003d80;
+}
+
+/* Nav menu styling */
+.nav-menu {
+  list-style-type: none; /* Remove bullets */
+  list-style-position: inside;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-menu li {
+  padding: 8px 12px;
+}
+
+/* Example for vertical nav (useful for media queries) */
+.nav-menu.vertical {
+  flex-direction: column;
+  gap: 10px;
+}
