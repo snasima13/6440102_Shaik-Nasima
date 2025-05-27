@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Banner</title>
+  <style>
+    /* Style for welcome banner using ID */
+    #welcomeBanner {
+      background-color: #007BFF; /* blue background */
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Reusable class for visual emphasis */
+    .highlight {
+      background-color: yellow;
+      padding: 5px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Welcome Banner -->
+  <div id="welcomeBanner">
+    <h1>Welcome Back, User!</h1>
+    <p>We’re glad to see you again. <span style="color: red; font-weight: bold;">Special Offer: 50% off today!</span></p>
+  </div>
+
+  <!-- Highlighted Section -->
+  <section>
+    <h2 class="highlight">Latest Updates</h2>
+    <p>Check out the <span class="highlight">new features</span> we’ve added to your dashboard.</p>
+  </section>
+
+</body>
+</html>

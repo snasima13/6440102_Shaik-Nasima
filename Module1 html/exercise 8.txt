@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Event Preferences</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f9f9f9;
+    }
+    label, select, button {
+      display: block;
+      margin: 20px auto;
+      max-width: 300px;
+      width: 100%;
+      font-size: 16px;
+    }
+    select, button {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #message {
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">Select Your Preferred Event</h2>
+
+  <label for="eventType">Preferred Event Type:</label>
+  <select id="eventType" onchange="savePreference()">
+    <option value="">--Select an event--</option>
+    <option value="music">Music Concert</option>
+    <option value="workshop">Workshop</option>
+    <option value="sports">Sports Day</option>
+  </select>
+
+  <button onclick="clearPreferences()">Clear Preferences</button>
+  <div id="message"></div>
+
+  <script>
+    // Save selection to localStorage
+    function savePreference() {
+      const selected = document.getElementById('eventType').value;
+      if (selected) {
+        localStorage.setItem('preferredEvent', selected);
+        document.getElementById('message').textContent = `Saved: ${selected}`;
+      }
+    }
+
+    // Pre-select the value on page load
+    window.onload = function () {
+      const saved = localStorage.getItem('preferredEvent');
+      if (saved) {
+        document.getElementById('eventType').value = saved;
+        document.getElementById('message').textContent = `Loaded: ${saved}`;
+      }
+    };
+
+    // Clear both localStorage and sessionStorage
+    function clearPreferences() {
+      localStorage.clear();
+      sessionStorage.clear();
+      document.getElementById('eventType').value = "";
+      document.getElementById('message').textContent = "Preferences cleared.";
+    }
+  </script>
+
+</body>
+</html>

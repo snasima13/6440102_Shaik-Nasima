@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Debug Practice Page</title>
+  <style>
+    .fixed-box {
+      width: 200px;
+      height: 100px;
+      background-color: lightblue;
+      border: 2px solid navy;
+      margin: 20px auto;
+      text-align: center;
+      padding: 10px;
+    }
+
+    /* Intentional bug: forgot to apply this class to <p> below */
+    .highlight {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Debugging with Chrome DevTools</h2>
+
+  <!-- Layout issue: this box is fine -->
+  <div class="fixed-box">This box is styled correctly.</div>
+
+  <!-- Style issue: class not applied -->
+  <p>This paragraph should be red and bold, but it isn't.</p>
+
+  <!-- Button to trigger JS -->
+  <button onclick="runScript()">Run Script</button>
+
+  <div id="result"></div>
+
+  <script>
+    function runScript() {
+      console.log("Button clicked: running script...");
+
+      let userName = "Pooja";
+
+      // Intentional bug: 'userAge' is not defined
+      console.log("User age is: " + userAge);  // This will cause an error
+
+      let resultDiv = document.getElementById("result");
+      resultDiv.textContent = "Hello " + userName + ", script ran successfully!";
+    }
+  </script>
+
+</body>
+</html>

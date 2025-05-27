@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Events Gallery</title>
+  <style>
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      text-align: center;
+    }
+    caption {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .img-border {
+      border: 3px solid #444;
+      border-radius: 8px;
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+    }
+    td {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <table>
+    <caption>Highlights from Our Past Community Events</caption>
+    <tr>
+      <td>
+        <img src="event1.jpg" alt="Music Fest 2024" title="Music Fest 2024" class="img-border">
+        <p>Music Fest</p>
+      </td>
+      <td>
+        <img src="event2.jpg" alt="Art Fair 2024" title="Art Fair 2024" class="img-border">
+        <p>Art Fair</p>
+      </td>
+      <td>
+        <img src="event3.jpg" alt="Food Carnival 2024" title="Food Carnival 2024" class="img-border">
+        <p>Food Carnival</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="event4.jpg" alt="Sports Day 2024" title="Sports Day 2024" class="img-border">
+        <p>Sports Day</p>
+      </td>
+      <td>
+        <img src="event5.jpg" alt="Volunteer Drive 2024" title="Volunteer Drive 2024" class="img-border">
+        <p>Volunteer Drive</p>
+      </td>
+      <td>
+        <img src="event6.jpg" alt="Cultural Night 2024" title="Cultural Night 2024" class="img-border">
+        <p>Cultural Night</p>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
