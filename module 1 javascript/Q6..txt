@@ -1,0 +1,29 @@
+Q6.
+// Initial array of community events
+let communityEvents = [
+  { title: "Baking", category: "Food" },
+  { title: "Guitar", category: "Music" },
+  { title: "Painting", category: "Art" }
+];
+
+//  1. Add new events using .push()
+communityEvents.push(
+  { title: "Drumming", category: "Music" },
+  { title: "Coding", category: "Technology" }
+);
+
+//  2. Filter only music events
+const musicEvents = communityEvents.filter(event => event.category === "Music");
+
+console.log(" Music Events:");
+musicEvents.forEach(event => {
+  console.log(`- ${event.title}`);
+});
+
+//  3. Format display cards using .map()
+const displayCards = communityEvents.map(event => `Workshop on ${event.title}`);
+console.log("\n Event Display Cards:");
+displayCards.forEach(card => console.log(card));
+
+
+

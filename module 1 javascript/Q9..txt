@@ -1,0 +1,79 @@
+Q9.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Async Event Fetch</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .spinner { display: none; font-style: italic; color: gray; }
+    .event { margin: 10px 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+
+  <h1> Community Events (Async)</h1>
+  <div class="spinner" id="spinner"> Loading events...</div>
+  <div id="eventContainer"></div>
+
+  <script>
+    // Mock JSON API simulation
+    function mockFetchEvents() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const data = [
+            { name: "Hackathon", date: "2025-07-15" },
+            { name: "Music Fest", date: "2025-08-01" },
+            { name: "Art Expo", date: "2025-09-10" }
+          ];
+          resolve(data);
+        }, 1500); // Simulate network delay
+      });
+    }
+
+    const container = document.getElementById("eventContainer");
+    const spinner = document.getElementById("spinner");
+
+    // --- Using .then() / .catch()
+    function loadEventsWithThen() {
+      spinner.style.display = "block";
+      mockFetchEvents()
+        .then(events => {
+          spinner.style.display = "none";
+          renderEvents(events);
+        })
+        .catch(err => {
+          spinner.style.display = "none";
+          container.innerHTML = `<p style="color:red;"> Error loading events</p>`;
+        });
+    }
+
+    // --- Using async/await ---
+    async function loadEventsAsync() {
+      spinner.style.display = "block";
+      try {
+        const events = await mockFetchEvents();
+        renderEvents(events);
+      } catch (err) {
+        container.innerHTML = `<p style="color:red;"> Error loading events</p>`;
+      } finally {
+        spinner.style.display = "none";
+      }
+    }
+
+    // Render event cards
+    function renderEvents(events) {
+      container.innerHTML = ""; // Clear previous
+      events.forEach(event => {
+        const div = document.createElement("div");
+        div.className = "event";
+        div.innerHTML = `<strong>${event.name}</strong><br> ${event.date}`;
+        container.appendChild(div);
+      });
+    }
+    loadEventsAsync();
+  </script>
+
+</body>
+</html>
+

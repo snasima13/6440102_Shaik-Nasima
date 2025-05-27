@@ -1,0 +1,29 @@
+
+Q5.
+// Define Event class (constructor function)
+function Event(name, date, category, seats) {
+  this.name = name;
+  this.date = date;
+  this.category = category;
+  this.seats = seats;
+}
+
+// Add method to prototype
+Event.prototype.checkAvailability = function () {
+  return this.seats > 0 ? "Available" : "Full";
+};
+
+// Create event instances
+const event1 = new Event("JavaScript Bootcamp", "2025-07-15", "Programming", 20);
+const event2 = new Event("UX Workshop", "2025-06-10", "Design", 0);
+
+// Check availability
+console.log(` ${event1.name} is ${event1.checkAvailability()}`);
+console.log(` ${event2.name} is ${event2.checkAvailability()}`);
+
+// Show object keys and values using Object.entries()
+console.log("\n Event 1 Details:");
+Object.entries(event1).forEach(([key, value]) => {
+  console.log(`${key}: ${value}`);
+});
+

@@ -1,0 +1,98 @@
+Q8.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Events</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .controls { margin-bottom: 20px; }
+    .event-card { border: 1px solid #ccc; padding: 15px; margin: 10px 0; border-radius: 8px; }
+    .event-card h3 { margin: 0 0 5px; }
+    button { padding: 5px 10px; }
+  </style>
+</head>
+<body>
+
+  <h1> Community Events</h1>
+
+  <div class="controls">
+    <label>Filter by Category:
+      <select id="categoryFilter" onchange="filterEvents()">
+        <option value="All">All</option>
+        <option value="Music">Music</option>
+        <option value="Tech">Tech</option>
+        <option value="Fitness">Fitness</option>
+      </select>
+    </label>
+
+    <br><br>
+
+    <label>Search by Name:
+      <input type="text" id="searchInput" placeholder="Type event name..." onkeydown="handleSearch(event)">
+    </label>
+  </div>
+
+  <div id="eventsContainer"></div>
+
+  <script>
+    const events = [
+      { name: "Rock Concert", category: "Music", seats: 5 },
+      { name: "Yoga Class", category: "Fitness", seats: 3 },
+      { name: "JavaScript Meetup", category: "Tech", seats: 2 },
+      { name: "Guitar Jam", category: "Music", seats: 0 },
+    ];
+
+    let filteredEvents = [...events];
+
+    const container = document.querySelector("#eventsContainer");
+
+    function render(eventsToRender) {
+      container.innerHTML = "";
+      eventsToRender.forEach((event, index) => {
+        const card = document.createElement("div");
+        card.className = "event-card";
+        card.innerHTML = `
+          <h3>${event.name}</h3>
+          <p>Category: ${event.category}</p>
+          <p>Seats Left: <span id="seats-${index}">${event.seats}</span></p>
+          <button onclick="register(${index})">Register</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function register(index) {
+      if (filteredEvents[index].seats > 0) {
+        filteredEvents[index].seats--;
+        document.querySelector(`#seats-${index}`).textContent = filteredEvents[index].seats;
+      } else {
+        alert(" No seats left!");
+      }
+    }
+
+    function filterEvents() {
+      const category = document.querySelector("#categoryFilter").value;
+      filteredEvents = category === "All"
+        ? [...events]
+        : events.filter(e => e.category === category);
+      render(filteredEvents);
+    }
+
+    function handleSearch(event) {
+      if (event.key === "Enter") {
+        const keyword = event.target.value.toLowerCase();
+        const searched = events.filter(e => e.name.toLowerCase().includes(keyword));
+        filteredEvents = searched;
+        render(searched);
+      }
+    }
+
+    // Initial render
+    render(filteredEvents);
+  </script>
+</body>
+</html>
+
+
+

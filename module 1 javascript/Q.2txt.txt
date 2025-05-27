@@ -1,0 +1,27 @@
+
+2.js
+// Log a message to the console
+console.log("Welcome to the Community Portal");
+
+// Show an alert when the page is fully loaded
+window.onload = function () {
+  alert("Page fully loaded!");
+};
+
+
+Q2. // Declare event details
+const eventName = "Tech Talk 2025";
+const eventDate = "June 15, 2025";
+let availableSeats = 50;
+
+// Display event info using template literals
+console.log(`Event: ${eventName}`);
+console.log(`Date: ${eventDate}`);
+console.log(`Available Seats: ${availableSeats}`);
+
+// Simulate a registration
+console.log("One person just registered...");
+availableSeats--;  // Decrease seat count by 1
+
+// Updated seat count
+console.log(`Updated Seats Available: ${availableSeats}`);

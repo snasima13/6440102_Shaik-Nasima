@@ -1,0 +1,29 @@
+Q10.
+// Initial event list
+const events = [
+  { name: "Dance Party", category: "Music", seats: 10 },
+  { name: "Code Workshop", category: "Tech", seats: 5 },
+  { name: "Cooking Class", category: "Food", seats: 8 },
+];
+
+// Function to display events with optional category filter (default = 'All')
+const displayEvents = (eventList, category = "All") => {
+  // Clone array using spread operator to avoid mutation
+  const clonedEvents = [...eventList];
+
+  // Filter if category is not 'All'
+  const filteredEvents = category === "All"
+    ? clonedEvents
+    : clonedEvents.filter(({ category: cat }) => cat === category);
+
+  filteredEvents.forEach(({ name, category, seats }) => {
+    console.log(`Event: ${name} | Category: ${category} | Seats: ${seats}`);
+  });
+};
+
+// Usage examples:
+console.log("=== All Events ===");
+displayEvents(events);
+
+console.log("\n=== Tech Events ===");
+displayEvents(events, "Tech");

@@ -1,0 +1,73 @@
+Q7.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Community Events</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .event-card { border: 1px solid #ccc; padding: 15px; margin: 10px 0; border-radius: 8px; }
+    .event-card h3 { margin: 0 0 5px; }
+    .buttons { margin-top: 10px; }
+    button { margin-right: 5px; padding: 5px 10px; }
+  </style>
+</head>
+<body>
+
+  <h1> Community Events</h1>
+  <div id="eventsContainer"></div>
+
+  <script>
+    // Sample event data
+    const events = [
+      { name: "Music Night", date: "2025-07-01", seats: 3 },
+      { name: "Yoga Class", date: "2025-06-15", seats: 2 },
+      { name: "Tech Talk", date: "2025-08-05", seats: 1 }
+    ];
+
+    const container = document.querySelector("#eventsContainer");
+
+    // Function to render all event cards
+    function renderEvents() {
+      container.innerHTML = ""; // Clear old content
+
+      events.forEach((event, index) => {
+        const card = document.createElement("div");
+        card.className = "event-card";
+
+        card.innerHTML = `
+          <h3>${event.name}</h3>
+          <p> Date: ${event.date}</p>
+          <p> Seats Left: <span id="seats-${index}">${event.seats}</span></p>
+          <div class="buttons">
+            <button onclick="register(${index})">Register</button>
+            <button onclick="cancel(${index})">Cancel</button>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    // Register function
+    function register(index) {
+      if (events[index].seats > 0) {
+        events[index].seats--;
+        document.querySelector(`#seats-${index}`).textContent = events[index].seats;
+      } else {
+        alert(" No seats available!");
+      }
+    }
+
+    // Cancel function
+    function cancel(index) {
+      events[index].seats++;
+      document.querySelector(`#seats-${index}`).textContent = events[index].seats;
+    }
+
+    // Initial render
+    renderEvents();
+  </script>
+</body>
+</html>

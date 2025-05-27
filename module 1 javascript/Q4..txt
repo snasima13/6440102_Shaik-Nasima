@@ -1,0 +1,66 @@
+Q4.
+
+// Event data
+let events = [];
+
+// Function to add an event
+function addEvent(name, date, category, seats) {
+  events.push({ name, date, category, seats });
+}
+
+// Closure to track total registrations by category
+function createCategoryTracker() {
+  const totals = {};
+
+  return function register(category) {
+    if (!totals[category]) {
+      totals[category] = 0;
+    }
+    totals[category]++;
+    console.log(`Total registrations for ${category}: ${totals[category]}`);
+  };
+}
+
+const trackCategoryRegistration = createCategoryTracker();
+
+// Register a user for an event
+function registerUser(eventName) {
+  const event = events.find(e => e.name === eventName);
+
+  try {
+    if (!event) throw new Error("Event not found.");
+    if (event.seats <= 0) throw new Error("No seats left.");
+
+    event.seats--;
+    console.log(` Registered for ${event.name}. Seats left: ${event.seats}`);
+    trackCategoryRegistration(event.category);
+  } catch (err) {
+    console.error(` Registration failed: ${err.message}`);
+  }
+}
+
+// Higher-order function: filter by custom rule
+function filterEventsByCategory(callback) {
+  return events.filter(callback);
+}
+
+// --- Demo ---
+// Add some events
+addEvent("Tech Talk", "2025-07-01", "Technology", 10);
+addEvent("Design Jam", "2025-06-15", "Design", 5);
+addEvent("Health & Wellness", "2025-08-10", "Health", 0);
+addEvent("Code Sprint", "2025-07-20", "Technology", 15);
+
+// Filter Technology events with available seats
+const techEvents = filterEventsByCategory(e => e.category === "Technology" && e.seats > 0);
+console.log("\n Technology Events with Seats:");
+techEvents.forEach(e => console.log(`${e.name} - Seats: ${e.seats}`));
+
+// Register users
+registerUser("Tech Talk");
+registerUser("Tech Talk");
+registerUser("Design Jam");
+registerUser("Health & Wellness"); 
+
+
+

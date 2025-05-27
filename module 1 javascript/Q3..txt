@@ -1,0 +1,36 @@
+Q3.
+// Sample list of events
+const events = [
+  { name: "Tech Meetup", date: "2025-06-30", seats: 20 },
+  { name: "AI Workshop", date: "2024-12-01", seats: 0 },  // Past date, full
+  { name: "Hackathon", date: "2025-07-10", seats: 10 },
+  { name: "Coding Bootcamp", date: "2025-05-20", seats: 0 } // Full event
+];
+
+// Get today's date in YYYY-MM-DD format
+const today = new Date().toISOString().split("T")[0];
+
+console.log("Upcoming Events with Available Seats:\n");
+
+// Loop through and show only valid events
+events.forEach(event => {
+  if (event.date > today && event.seats > 0) {
+    console.log(` ${event.name} - ${event.date} - Seats: ${event.seats}`);
+
+    // Try registering one user
+    try {
+      if (event.seats <= 0) {
+        throw new Error("No seats available!");
+      } else {
+        event.seats--;
+        console.log(` Registered for ${event.name}. Seats left: ${event.seats}`);
+      }
+    } catch (error) {
+      console.error(` Error registering for ${event.name}: ${error.message}`);
+    }
+
+  } else {
+    console.log(` ${event.name} - Not available (Past or Full)`);
+  }
+});
+
